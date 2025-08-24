@@ -12,9 +12,9 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="bg-[#f4f5f7] py-4">
-  <div class="max-w-lg mx-auto bg-white border-x border-gray-400">
-    <div class="min-h-[50px] flex justify-between items-center p-3 border-y-1 border-gray-400">
+<body class="bg-[#f4f5f7]">
+  <div class="max-w-lg mx-auto bg-white rounded-b-2xl">
+    <div class="min-h-[50px] flex justify-between items-center p-3 border-b-1 border-gray-400">
       <div class="flex items-center gap-3">
         <a href="./home.html"><img class="h-12" src="./assets/Group.png" alt=""></a>
         <div>
@@ -38,27 +38,38 @@
       </p>
     </div>
 
-    <div class="px-3 pt-6 pb-5 min-h-[200px] grid grid-cols-3 gap-4">
+    <div class="px-3 pt-6 pb-4 min-h-[200px] grid grid-cols-3 gap-4">
+      <!-- Add Money Button -->
       <div id="add-button" class="form-btn border-1 border-gray-300 text-center p-3 rounded-xl cursor-pointer">
         <img class="mx-auto" src="./assets/wallet1.png" alt="">
         <h2 class="mt-1">Add Money</h2>
       </div>
+
+      <!-- Cash Out Button -->
       <div id="cash-out-button" class="form-btn border-1 border-gray-300 text-center p-3 rounded-xl cursor-pointer">
         <img class="mx-auto" src="./assets/send1.png" alt="">
         <h2 class="mt-1">Cash Out</h2>
       </div>
+
+      <!-- Transfer Button -->
       <div id="transfer-button" class="form-btn border-1 border-gray-300 text-center p-3 rounded-xl cursor-pointer">
         <img class="mx-auto" src="./assets/money1.png" alt="">
         <h2 class="mt-1">Transfer</h2>
       </div>
+
+      <!-- Get Bonus Button -->
       <div id="getbonus-button" class="form-btn border-1 border-gray-300 text-center p-3 rounded-xl cursor-pointer">
         <img class="mx-auto" src="./assets/bonus1.png" alt="">
         <h2 class="mt-1">Get Bonus</h2>
       </div>
+
+      <!-- Pay Bill Button -->
       <div id="bill-button" class="form-btn border-1 border-gray-300 text-center p-3 rounded-xl cursor-pointer">
         <img class="mx-auto" src="./assets/purse1.png" alt="">
         <h2 class="mt-1">Pay Bill</h2>
       </div>
+
+      <!-- Trnaction Button -->
       <div id="transaction-button" class="form-btn border-1 border-gray-300 text-center p-3 rounded-xl cursor-pointer">
         <img class="mx-auto" src="./assets/transaction1.png" alt="">
         <h2 class="mt-1">Transaction</h2>
@@ -66,7 +77,7 @@
     </div>
   </div>
 
-  <div class="all-form-section max-w-lg mx-auto px-3 pb-3 border-b border-x border-gray-400">
+  <div class="all-form-section max-w-lg mx-auto px-3 pb-3">
     <!-- add money -->
     <div class="form" id="add-money-parent">
       <h1 class="text-lg font-semibold py-3">Add Money</h1>
@@ -149,19 +160,8 @@
         <p class="text-[#08080880]">View All</p>
       </div>
 
-      <div>
-        <div class="bg-white rounded-xl p-3 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <div class="p-3 rounded-full bg-[#f4f5f7]">
-              <img src="./assets/wallet1.png" alt="">
-            </div>
-            <div>
-              <h3>Electricity Bill</h3>
-              <p>Today 01:44 AM</p>
-            </div>
-          </div>
-          <i class="fa-solid fa-ellipsis-vertical"></i>
-        </div>
+      <div id="transaction-container">
+        
       </div>
 
     </div>
