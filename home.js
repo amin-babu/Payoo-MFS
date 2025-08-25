@@ -119,22 +119,22 @@ document.getElementById('transfer-btn')
     const userPin = getInputValueNumber('user-pin');
     const currentBalance = getInnerText('available-banalce');
 
-    if(userAccountNumber.length < 11){
+    if (userAccountNumber.length < 11) {
       alert('Invalid account number!');
       return;
     }
 
-    if(userAmount <= 0 || isNaN(userAmount)){
+    if (userAmount <= 0 || isNaN(userAmount)) {
       alert('Invalid Amount');
       return;
     }
 
-    if(userAmount > currentBalance){
+    if (userAmount > currentBalance) {
       alert('Not enough money!');
       return;
     }
 
-    if(userPin !== validPin){
+    if (userPin !== validPin) {
       alert('Invalid pin number!');
       return;
     }
@@ -150,6 +150,45 @@ document.getElementById('transfer-btn')
 
     transactionData.push(data);
     console.log(transactionData);
+  })
+
+// get bonus feature
+document.getElementById('get-bonus-button')
+  .addEventListener('click', function (event) {
+    event.preventDefault();
+
+    let couponCode = 'Babu450';
+    let bonusMoney = 450;
+
+    let copunCode2 = 'Nafisa360';
+    let bonusMoney2 = 360;
+
+    let currentBalance = parseInt(document.getElementById('available-banalce').innerText);
+    const copunInput = document.getElementById('copun-code-input').value;
+
+    if (copunInput.toLowerCase() === couponCode.toLowerCase()) {
+      currentBalance += bonusMoney;
+      document.getElementById('available-banalce').innerText = currentBalance;
+      alert(`Congratulations! You have got ${bonusMoney} TK.`);
+
+      const data = {
+        name: 'Get Bonus',
+        date: new Date().toLocaleTimeString()
+      }
+      transactionData.push(data);
+    } else if (copunInput.toLowerCase() === copunCode2.toLowerCase()) {
+      currentBalance += bonusMoney2;
+      document.getElementById('available-banalce').innerText = currentBalance;
+      alert(`Congratulations! You have got ${bonusMoney2} TK.`);
+
+      const data = {
+        name: 'Get Bonus',
+        date: new Date().toLocaleTimeString()
+      }
+      transactionData.push(data);
+    } else {
+      alert('Copun code is invalid!');
+    }
   })
 
 // transaction money feature
