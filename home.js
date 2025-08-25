@@ -52,6 +52,12 @@ document.getElementById('add-money-btn')
     const bank = document.getElementById('bank').value;
     const accountNumber = document.getElementById('account').value;
     const amount = getInputValueNumber('add-amount');
+
+    if (amount <= 0 || isNaN(amount)) {
+      alert('Invalid amount!');
+      return;
+    }
+
     const pin = getInputValueNumber('add-pin');
 
     const availableBalance = getInnerText('available-banalce');
@@ -80,12 +86,20 @@ document.getElementById('withdraw-btn')
     const accountNumber = document.getElementById('agent-number').value;
     const pin = getInputValueNumber('cash-pin');
     const availableBalance = getInnerText('available-banalce');
+
+    if (amount <= 0 || isNaN(amount) || amount >= availableBalance) {
+      alert('Invalid Amount!');
+      return;
+    }
+
     if (accountNumber.length < 11 || pin !== validPin) {
       alert('Wrong account number or pin');
       return;
     }
+
     const remainBalance = availableBalance - amount;
     document.getElementById('available-banalce').innerText = remainBalance;
+    alert(`Cash out ${amount} TK Successfully.`);
 
     const data = {
       name: 'Cash Out',
@@ -96,6 +110,49 @@ document.getElementById('withdraw-btn')
     console.log(transactionData);
   })
 
+// transfer money feature
+document.getElementById('transfer-btn')
+  .addEventListener('click', function (event) {
+    event.preventDefault();
+    const userAccountNumber = document.getElementById('user-account-number').value;
+    const userAmount = getInputValueNumber('transfer-amount');
+    const userPin = getInputValueNumber('user-pin');
+    const currentBalance = getInnerText('available-banalce');
+
+    if(userAccountNumber.length < 11){
+      alert('Invalid account number!');
+      return;
+    }
+
+    if(userAmount <= 0 || isNaN(userAmount)){
+      alert('Invalid Amount');
+      return;
+    }
+
+    if(userAmount > currentBalance){
+      alert('Not enough money!');
+      return;
+    }
+
+    if(userPin !== validPin){
+      alert('Invalid pin number!');
+      return;
+    }
+
+    const newBalance = currentBalance - userAmount;
+    document.getElementById('available-banalce').innerText = newBalance;
+    alert('Money transfer successfully!');
+
+    const data = {
+      name: 'Transfer money',
+      date: new Date().toLocaleTimeString()
+    }
+
+    transactionData.push(data);
+    console.log(transactionData);
+  })
+
+// transaction money feature
 document.getElementById('transaction-button')
   .addEventListener('click', function () {
     const transactionContainer = document.getElementById('transaction-container');
