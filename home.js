@@ -226,11 +226,16 @@ document.getElementById('pay-bill-button')
 // transaction money feature
 document.getElementById('transaction-button')
   .addEventListener('click', function () {
-    const transactionContainer = document.getElementById('transaction-container');
-    transactionContainer.innerText = '';
-    for (const data of transactionData) {
-      const div = document.createElement('div');
-      div.innerHTML = `
+    if (transactionData.length !== 0) {
+      const transactionTitle = document.getElementById('transaction-title');
+      transactionTitle.innerText = 'Transaction';
+      document.querySelector('#view-all').style.display = 'block';
+      
+      const transactionContainer = document.getElementById('transaction-container');
+      transactionContainer.innerText = '';
+      for (const data of transactionData) {
+        const div = document.createElement('div');
+        div.innerHTML = `
         <div class="bg-white rounded-xl p-3 flex items-center justify-between mt-3">
           <div class="flex items-center gap-3">
             <div class="p-3 rounded-full bg-[#f4f5f7]">
@@ -244,7 +249,13 @@ document.getElementById('transaction-button')
           <i class="fa-solid fa-ellipsis-vertical"></i>
         </div>
       `;
-      transactionContainer.append(div);
+        transactionContainer.append(div);
+      }
+    } else {
+      const transactionTitle = document.getElementById('transaction-title');
+      transactionTitle.innerText = 'No Transaction';
+      document.querySelector('#view-all').style.display = 'none';
+      console.log(transactionTitle);
     }
   })
 

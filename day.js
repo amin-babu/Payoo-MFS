@@ -1,1 +1,6 @@
-console.log(isNaN(NaN));
+const num = [];
+if(num){
+  console.log('truth');
+}else{
+  console.log('false');
+}
