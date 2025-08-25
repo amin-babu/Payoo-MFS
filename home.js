@@ -191,6 +191,38 @@ document.getElementById('get-bonus-button')
     }
   })
 
+// pay bill feature
+document.getElementById('pay-bill-button')
+  .addEventListener('click', function (event) {
+    event.preventDefault();
+    const amount = getInputValueNumber('pay-bill-amount');
+    const accountNumber = document.getElementById('pay-bill-account-number').value;
+    const pin = getInputValueNumber('pay-bill-pin');
+    const availableBalance = getInnerText('available-banalce');
+
+    if (amount <= 0 || isNaN(amount) || amount >= availableBalance) {
+      alert('Invalid Amount!');
+      return;
+    }
+
+    if (accountNumber.length < 11 || pin !== validPin) {
+      alert('Wrong account number or pin');
+      return;
+    }
+
+    const remainBalance = availableBalance - amount;
+    document.getElementById('available-banalce').innerText = remainBalance;
+    alert(`Pay Bill ${amount} TK Successfully.`);
+
+    const data = {
+      name: 'Pay Bill',
+      date: new Date().toLocaleTimeString()
+    }
+
+    transactionData.push(data);
+    console.log(transactionData);
+  })
+
 // transaction money feature
 document.getElementById('transaction-button')
   .addEventListener('click', function () {
